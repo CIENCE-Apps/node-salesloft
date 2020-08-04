@@ -1,5 +1,5 @@
 import { SalesLoft } from '../src/SalesLoft';
-import { describe, it } from 'mocha';
+import { describe, it, xit } from 'mocha';
 import { expect } from 'chai';
 import { PersonRequest } from '../src/resources/People';
 import { CurrentUserResponse } from '../src/resources/Me';
@@ -41,6 +41,7 @@ describe('SalesLoft', async () => {
     Team,
     TeamTemplates,
     Users,
+    Webhooks,
   } = sl;
   describe('Me', async () => {
     it('should fetch current user', async () => {
@@ -224,6 +225,38 @@ describe('SalesLoft', async () => {
     it('should call data records', async () => {
       const callDataRecordsResults = await CallDataRecords.list();
       expect(callDataRecordsResults).to.be.an('array');
+    });
+  });
+  describe('Webhook Subscriptions', async () => {
+    const cb_token = `${Date.now()}-${Math.random()}`
+    let createdHookId = -1
+    
+    it('should list webhooks', async () => {
+      const webhooks = await Webhooks.list();
+      expect(webhooks).to.be.an('array');
+    });
+    it('should create a webhook', async () => {
+      const webhook = await Webhooks.create({
+        callback_token: cb_token,
+        callback_url: 'https://example.org',
+        event_type: 'account_created',
+      })
+      if (webhook && typeof webhook.id === 'number') {
+        createdHookId = webhook.id
+      }
+      
+      expect(webhook).to.have.property('id')
+    });
+
+    const derivedTestFn = createdHookId >= 0 ? it : xit
+
+    derivedTestFn('should fetch a webhook', async () => {
+      const webhooksResult = await Webhooks.fetch(createdHookId);
+      expect(webhooksResult.id).to.equal(createdHookId);
+    });
+    derivedTestFn('should delete a webhook', async () => {
+      await Webhooks.delete(createdHookId);
+      expect(1).to.be(1); // Only hit if API request succeeds
     });
   });
 });

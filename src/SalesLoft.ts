@@ -28,6 +28,7 @@ import Notes from './resources/Notes';
 import OngoingActions from './resources/OngoingActions';
 import PersonStages from './resources/PersonStages';
 import RecordingSettings from './resources/RecordingSettings';
+import Webhooks from './resources/Webhooks';
 
 export class SalesLoft {
   public Me: Me;
@@ -60,6 +61,7 @@ export class SalesLoft {
   public Tags: Tags;
   public TeamTemplates: TeamTemplates;
   public Users: Users;
+  public Webhooks: Webhooks;
 
   constructor(apiKey:string) {
     this.Me = new Me('/me', apiKey);
@@ -92,6 +94,7 @@ export class SalesLoft {
     this.Tags = new Tags('/tags', apiKey);
     this.TeamTemplates = new TeamTemplates('/team_templates', apiKey);
     this.Users = new Users('/users', apiKey);
+    this.Webhooks = new Webhooks('/webhook_subscriptions', apiKey);
   }
 }
 

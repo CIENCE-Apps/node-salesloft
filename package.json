@@ -1,37 +1,37 @@
 {
-  "name": "salesloft",
-  "version": "1.2.0",
-  "description": "",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "scripts": {
-    "test": "mocha tests/**/*.ts -r ts-node/register -R mocha-junit-reporter",
-    "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "prepublish": "npm run build",
-    "prepush": "npm run build",
-    "build": "npm run build:clean && tsc",
-    "build:clean": "shx rm -rf ./dist"
-  },
-  "author": "Alex Leventer",
-  "license": "MIT",
-  "dependencies": {
-    "@types/request": "^2.48.4",
-    "@types/request-promise": "^4.1.46",
-    "axios": "^0.19.2",
-    "request": "^2.88.2",
-    "request-promise": "^4.2.5",
-    "tslint-config-airbnb": "^5.11.2"
-  },
-  "devDependencies": {
-    "@types/chai": "^4.2.11",
-    "@types/mocha": "^7.0.2",
-    "assert": "^2.0.0",
-    "chai": "^4.2.0",
-    "mocha": "^7.1.1",
-    "mocha-junit-reporter": "^1.23.3",
-    "shx": "^0.3.2",
-    "ts-node": "^8.9.0",
-    "tslint": "^6.1.1",
-    "typescript": "^3.8.3"
-  }
+	"name": "@cience-apps/salesloft",
+	"version": "1.2.0",
+	"description": "",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"scripts": {
+		"test": "mocha tests/**/*.ts -r ts-node/register -R mocha-junit-reporter",
+		"lint": "tslint -c tslint.json 'src/**/*.ts'",
+		"prepublish": "npm run build",
+		"prepush": "npm run build",
+		"build": "npm run build:clean && tsc",
+		"build:clean": "shx rm -rf ./dist"
+	},
+	"author": "Isaac Nassimi",
+	"license": "MIT",
+	"dependencies": {
+		"@types/request": "^2.48.4",
+		"@types/request-promise": "^4.1.46",
+		"axios": "^0.19.2",
+		"request": "^2.88.2",
+		"request-promise": "^4.2.5",
+		"tslint-config-airbnb": "^5.11.2"
+	},
+	"devDependencies": {
+		"@types/chai": "^4.2.11",
+		"@types/mocha": "^7.0.2",
+		"assert": "^2.0.0",
+		"chai": "^4.2.0",
+		"mocha": "^7.1.1",
+		"mocha-junit-reporter": "^1.23.3",
+		"shx": "^0.3.2",
+		"ts-node": "^8.9.0",
+		"tslint": "^6.1.1",
+		"typescript": "^3.8.3"
+	}
 }
